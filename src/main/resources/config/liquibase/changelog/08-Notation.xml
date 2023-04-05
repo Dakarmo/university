@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+        
+    <changeSet id="create-notation-table" author="christoph">
+        <createTable tableName="Notation">
+            <column name="NotationId" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>           
+            </column>
+            <column name="NoteRapport" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NoteOral" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EntrepriseId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="StageId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+         <addForeignKeyConstraint
+            baseTableName="Notation"
+            baseColumnNames="EntrepriseId" 
+            constraintName="fk_Notation_EntrepriseId"
+            referencedTableName="Entreprise" 
+            referencedColumnNames="EntrepriseId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+        
+        <addForeignKeyConstraint
+            baseTableName="Notation"
+            baseColumnNames="StageId" 
+            constraintName="fk_Notation_StageId"
+            referencedTableName="Stage" 
+            referencedColumnNames="StageId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    </changeSet>
+</databaseChangeLog>

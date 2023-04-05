@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+        
+    <changeSet id="create-collaborateur-table" author="christoph">
+        <createTable tableName="Collaborateur">
+            <column name="CollaborateurId" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>           
+            </column>
+            <column name="EntrepriseId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+         <addForeignKeyConstraint
+            baseTableName="Collaborateur"
+            baseColumnNames="EntrepriseId" 
+            constraintName="fk_Collaborateur_EntrepriseId"
+            referencedTableName="Entreprise" 
+            referencedColumnNames="EntrepriseId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    </changeSet>
+</databaseChangeLog>

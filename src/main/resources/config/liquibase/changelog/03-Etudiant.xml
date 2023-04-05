@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+        
+    <changeSet id="create-etudiant-table" author="christoph">
+        <createTable tableName="Etudiant">
+            <column name="EtudiantId" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>           
+            </column>
+            <column name="EtudiantNom" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EtudiantPrenom" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

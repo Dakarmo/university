@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+        
+    <changeSet id="create-stage-table" author="christoph">
+        <createTable tableName="Stage">
+            <column name="StageId" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>           
+            </column>
+            <column name="EntrepriseId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EtudiantId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RespAnneeId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ReferentId" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MaitreDeStage" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CollaborateurSignataire" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DateSignatureConvention" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="StageDateDebut" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="StageDateFin" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+         <addForeignKeyConstraint
+            baseTableName="Stage"
+            baseColumnNames="EntrepriseId" 
+            constraintName="fk_Stage_EntrepriseId"
+            referencedTableName="Entreprise" 
+            referencedColumnNames="EntrepriseId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+
+        <addForeignKeyConstraint
+            baseTableName="Stage"
+            baseColumnNames="EtudiantId" 
+            constraintName="fk_Stage_EtudiantId"
+            referencedTableName="Etudiant" 
+            referencedColumnNames="EtudiantId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+
+            <addForeignKeyConstraint
+            baseTableName="Stage"
+            baseColumnNames="RespAnneeId" 
+            constraintName="fk_Stage_RespAnneeId"
+            referencedTableName="ResponsableAnnee" 
+            referencedColumnNames="RespAnneeId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+
+            <addForeignKeyConstraint
+            baseTableName="Stage"
+            baseColumnNames="ReferentId" 
+            constraintName="fk_Stage_ReferentId"
+            referencedTableName="Referent" 
+            referencedColumnNames="ReferentId" onDelete="NO ACTION" onUpdate="NO ACTION" />
+    </changeSet>
+</databaseChangeLog>
